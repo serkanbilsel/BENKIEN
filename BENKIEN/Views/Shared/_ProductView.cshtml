@@ -1,0 +1,43 @@
+﻿@model Product
+
+<div class="col mb-5">
+    <div class="card h-100">
+        <!-- Product image-->
+        <a asp-action="Detail" asp-controller="Products" asp-route-id="@Model.Id">
+            <div class="container mt-3">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        @if (Model.ProductImages != null && Model.ProductImages.Any())
+                        {
+                            <img src="@Model.ProductImages.FirstOrDefault()?.ImageUrl" alt="" class="img-fluid rounded" />
+                        }
+                        else
+                        {
+                            <p class="text-center">Ürüne ait fotoğraf yok!</p>
+                        }
+                    </div>
+                </div>
+            </div>
+        </a>
+        <!-- Product details-->
+        <div class="card-body p-4">
+            <div class="text-center">
+                <!-- Product name-->
+                <h5 class="fw-bolder">@Model.Name</h5>
+                <!-- Product price-->
+                @Model.Price TL
+            </div>
+        </div>
+
+        <!-- Product actions-->
+        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+            <div class="text-center"><a class="btn btn-outline-dark mt-auto" asp-action="Detail" asp-controller="Products" asp-route-id="@Model.Id">İncele</a></div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

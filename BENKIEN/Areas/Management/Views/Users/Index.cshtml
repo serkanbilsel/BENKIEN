@@ -1,0 +1,89 @@
+﻿@model IEnumerable<User>
+
+@{
+    ViewData["Title"] = "Üyeler Yönetim Paneli";
+}
+
+
+<div class="container-fluid">
+    <h1 class="mt-4">Üyeler Yönetim Paneli</h1>
+    
+
+    <div class="card mb-4">
+        <div class="card-body text-center bg-dark text-bg-dark">
+            <p class="fw-bold text-bg-dark"><i>BENKIEN ÜYE VE ROL LİSTESİ</i></p>
+        </div>
+    </div>
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Kullanıcı Data Tablosu
+        </div>
+        <div class="card-body">
+            <table id="datatablesSimple">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Admin</th>
+                        <th>Aktif Kullanıcı</th>
+                    
+                        <th>İsim</th>
+                        <th>Soyisim</th>
+                      
+                        <th>Email</th>
+                        
+                        <th>Adres</th>
+                        <th>Telefon</th>
+                        <th>Üyelik Tarihi</th>
+                        <th>Düzenle</th>
+                       
+                      
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <td>@user.Id</td>
+                            <td>@user.IsAdmin</td>
+                            <td>@user.IsActive</td>
+                          
+                            <td>@user.Name</td>
+                            <td>@user.Surname</td>
+                           
+                            <td>@user.Email</td>
+                            
+                            <td>@user.Address</td>
+                            <td>@user.Phone</td>
+                            <td>@user.CreateDate</td>
+                            <td>
+                                <div class="d-flex">
+                                    <a class="btn btn-primary me-1" asp-action="Edit" asp-route-id="@user.Id"><i class="fas fa-edit"></i> Düzenle</a>
+                                    <form asp-action="Remove" asp-route-id="@user.Id" method="post" onsubmit="return confirmDelete(this);">
+                                        <button type="submit" class="btn btn-danger" id="deleteButton"><i class="fas fa-trash"></i> Sil</button>
+                                    </form>
+                                </div>
+
+                            </td>
+                            
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    function confirmDelete(formElement) {
+        var deleteButton = formElement.querySelector('button');
+
+        if (deleteButton.innerHTML === 'Emin Misin?') {
+            return true;
+        } else {
+            deleteButton.innerHTML = 'Emin Misin? <i class="fas fa-times"></i>';
+            return false;
+        }
+    }
+</script>

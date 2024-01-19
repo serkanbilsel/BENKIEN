@@ -1,0 +1,202 @@
+﻿@model ProductViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<div class="card mb-6">
+    <div class="card-body text-center">
+        <h4 class="text-center">"@Model.Product.Name" İsimli Ürün Detayları</h4>
+    </div>
+</div>
+
+<br />
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-sm-4">
+            <div class="row">
+                <div class="col-sm-20">
+
+                    <div class="col-sm-10">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Product.Name)
+                        </dt>
+                    </div>
+                    <div class="col-sm-10">
+                        <dd>
+                            @Html.DisplayFor(model => model.Product.Name)
+                        </dd>
+                    </div>
+                    <div class="col-sm-20">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Product.Description)
+                        </dt>
+                    </div>
+                    <div class="col-sm-10">
+                        <dd>
+                            @Html.Raw(Model.Product.Description)
+                        </dd>
+                    </div>
+                    <div class="col-sm-10">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Product.Price)
+                        </dt>
+                    </div>
+                    <div class="col-sm-10">
+                        <dd>
+                            @Html.DisplayFor(model => model.Product.Price)
+                        </dd>
+                    </div>
+                    <div class="col-sm-20">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Product.ProductCode)
+                        </dt>
+                    </div>
+                    <div class="col-sm-10">
+                        <dd>
+                            @Html.DisplayFor(model => model.Product.ProductCode)
+                        </dd>
+                    </div>
+                    <div class="col-sm-20">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Product.Stock)
+                        </dt>
+                    </div>
+                    <div class="col-sm-10">
+                        <dd>
+                            @Html.DisplayFor(model => model.Product.Stock)
+                        </dd>
+                    </div>
+                    <div class="col-sm-20">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Product.IsAvailable)
+                        </dt>
+                    </div>
+                    <div class="col-sm-10">
+                        <dd>
+                            @Html.DisplayFor(model => model.Product.IsAvailable)
+                        </dd>
+                    </div>
+                    <div class="col-sm-20">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Product.IsActive)
+                        </dt>
+                    </div>
+                    <div class="col-sm-10">
+                        <dd>
+                            @Html.DisplayFor(model => model.Product.IsActive)
+                        </dd>
+                    </div>
+                    <div class="col-sm-20">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Product.IsHome)
+                        </dt>
+                    </div>
+                    <div class="col-sm-10">
+                        <dd>
+                            @Html.DisplayFor(model => model.Product.IsHome)
+                        </dd>
+                    </div>
+                    <div class="col-sm-20">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Product.CreatedAt)
+                        </dt>
+                    </div>
+                    <div class="col-sm-10">
+                        <dd>
+                            @Html.DisplayFor(model => model.Product.CreatedAt)
+                        </dd>
+                    </div>
+                    <div class="col-sm-20">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Product.Brand)
+                        </dt>
+                    </div>
+                    <div class="col-sm-10">
+                        <dd>
+                            @Html.DisplayFor(model => model.Product.Brand.Name)
+                        </dd>
+                    </div>
+                    <div class="col-sm-20">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Product.Category)
+                        </dt>
+                    </div>
+                    <div class="col-sm-10">
+                        <dd>
+                            @Html.DisplayFor(model => model.Product.Category.Name)
+                        </dd>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- İlk Slider: Ana Fotoğraf -->
+        <div class="col-md-4">
+            <div id="mainImageCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+                <div class="carousel-inner">
+                    @if (Model.Product.ProductImages != null && Model.Product.ProductImages.Any())
+                    {
+                        for (int i = 0; i < Model.Product.ProductImages.Count; i++)
+                        {
+                            var image = Model.Product.ProductImages[i];
+                            <div class="carousel-item @(i == 0 ? "active" : "")">
+                                <img src="@image.ImageUrl" alt="@image.ImageName" class="d-block w-100 img-thumbnail" />
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="carousel-item">
+                            <p class="text-center">Ürüne ait fotoğraf yok!</p>
+                        </div>
+                    }
+                </div>
+                <!-- Slider Kontrol Butonları -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#mainImageCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#mainImageCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                @if (Model.Product.ProductImages != null && Model.Product.ProductImages.Any())
+                {
+                    <div class="row row-cols-1 row-cols-md-5 g-4">
+                        @foreach (var image in Model.Product.ProductImages)
+                        {
+                            <div class="col">
+                                <img src="@image.ImageUrl" alt="@image.ImageName" class="d-block img-thumbnail mb-2" />
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <p class="text-center">Ürüne ait başka fotoğraf yok!</p>
+                }
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <a class="btn btn-danger" asp-action="Edit" asp-route-id="@Model?.Product.Id">Düzenle</a> |
+            <a class="btn btn-success" asp-action="Index">Listeye Geri Dön</a>
+        </div>
+    </div>
+
+
+</div>

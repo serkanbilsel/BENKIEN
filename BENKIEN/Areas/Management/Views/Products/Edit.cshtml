@@ -1,0 +1,174 @@
+﻿@model ProductViewModel
+
+@{
+    ViewData["Title"] = "Düzenle";
+}
+
+<h4 class="text-center">"@Model.Product.Name" İsimli Ürününü Düzenle</h4>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <form asp-action="Edit" method="post" enctype="multipart/form-data" id="formEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Product.Id" />
+
+            <div class="form-group">
+                <label asp-for="Product.Name" class="control-label"></label>
+                <input asp-for="Product.Name" class="form-control" />
+                <span asp-validation-for="Product.Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Product.Description" class="control-label">Ürün Açıklaması</label>
+                <textarea asp-for="Product.Description" class="form-control" rows="5"></textarea>
+                <span asp-validation-for="Product.Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ProductImages" class="control-label"></label>
+                <input asp-for="ProductImages" type="file" class="form-control" multiple />
+                <span asp-validation-for="ProductImages" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Product.Price" class="control-label"></label>
+                <input asp-for="Product.Price" class="form-control" />
+                <span asp-validation-for="Product.Price" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Product.ProductCode" class="control-label"></label>
+                <input asp-for="Product.ProductCode" class="form-control" />
+                <span asp-validation-for="Product.ProductCode" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Product.CategoryId" class="control-label"></label>
+                <select asp-for="Product.CategoryId" class="form-control" asp-items="ViewBag.Categories"></select>
+                <span asp-validation-for="Product.CategoryId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Product.BrandId" class="control-label"></label>
+                <select asp-for="Product.BrandId" class="form-control" asp-items="ViewBag.Brands"></select>
+                <span asp-validation-for="Product.BrandId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Product.Stock" class="control-label"></label>
+                <input asp-for="Product.Stock" class="form-control" />
+                <span asp-validation-for="Product.Stock" class="text-danger"></span>
+            </div>
+
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Product.IsAvailable" /> @Html.DisplayNameFor(model => model.Product.IsAvailable)
+                </label>
+            </div>
+
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Product.IsActive" /> @Html.DisplayNameFor(model => model.Product.IsActive)
+                </label>
+            </div>
+
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Product.IsHome" /> @Html.DisplayNameFor(model => model.Product.IsHome)
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Product.UpdatedAt" class="control-label"></label>
+                <input asp-for="Product.UpdatedAt" class="form-control" />
+                <span asp-validation-for="Product.UpdatedAt" class="text-danger"></span>
+            </div>
+
+            <div class="container mt-4">
+                <div class="row">
+                    <div class="col-md-8">
+                        <!-- Slider -->
+                        <div id="productImageCarousel" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                @if (Model.ProductImages != null && Model.ProductImages.Any())
+                                {
+                                    for (int i = 0; i < Model.ProductImages.Count; i++)
+                                    {
+                                        var image = Model.ProductImages[i];
+                                        <div class="carousel-item @(i == 0 ? "active" : "")">
+                                            <img src="@image.ImageUrl" alt="@image.ImageName" class="d-block w-100 img-thumbnail" />
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    <div class="carousel-item active">
+                                        <p class="text-center">Ürüne ait fotoğraf yok!</p>
+                                    </div>
+                                }
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#productImageCarousel" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#productImageCarousel" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+                    <hr />
+                    <h4 class="text-center">"Lütfen silmek istediğiniz resimleri seçiniz!"</h4>
+                    <!-- Tek Tek Resimler -->
+                    <div class="mt-4">
+                        @if (Model.ProductImages != null && Model.ProductImages.Any())
+                        {
+                            <div class="row row-cols-1 row-cols-md-5 g-4">
+                                @foreach (var image in Model.ProductImages)
+                                {
+                                    <div class="col">
+                                        <img src="@image.ImageUrl" alt="@image.ImageName" class="d-block img-thumbnail mb-2" />
+                                        <input type="checkbox" class="image-checkbox" name="imageIds" value="@image.Id" /> Seç
+                                    </div>
+                                }
+                            </div>
+                        }
+                        else
+                        {
+                            <p class="text-center">Ürüne ait başka fotoğraf yok!</p>
+                        }
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="row justify-content-center">
+                <div class="col-md-14">
+                    <input type="submit" value="Güncelle" class="btn btn-primary" />
+                    <a class="btn btn-outline-success mt-2 ms-1 mb-2" asp-action="Index">Listeye Geri Dön</a>
+                
+                    <script>
+                        $(document).ready(function () {
+                            $('#formEdit').submit(function (e) {
+                                // Seçilen resim sayısını kontrol et
+                                var selectedImagesCount = $('.image-checkbox:checked').length;
+
+                                if (selectedImagesCount > 0) {
+                                    // Seçilen resim varsa onay iletişim kutusunu göster
+                                    var confirmResult = confirm(selectedImagesCount + " adet resimi silmek istediğinize emin misiniz?");
+
+                                    if (!confirmResult) {
+                                        // Kullanıcı "Cancel" derse formu gönderme
+                                        e.preventDefault();
+                                    }
+                                }
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+

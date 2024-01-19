@@ -1,0 +1,26 @@
+﻿<form id="subscribeForm" asp-action="Subscribe" asp-controller="NewsLetter" method="post">
+    <div class="form-floating position-relative">
+        <input type="email"
+               name="Email"
+               class="form-control bg-transparent border-0 border-bottom rounded-0 shadow-none"
+               id="floatingInput" placeholder="E-Mail">
+        <label for="floatingInput" class="bg-transparent">E-Mail</label>
+        <div class="btns position-absolute top-50 end-0 translate-middle-y">
+            <button type="submit" class="btn btn-link text-dark">Kayıt Ol</button>
+        </div>
+    </div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success mt-3">
+            @Html.Raw(TempData["SuccessMessage"])
+        </div>
+    }
+
+    @if (TempData["DangerMessage"] != null)
+    {
+        <div class="alert alert-danger mt-3">
+            @Html.Raw(TempData["DangerMessage"])
+        </div>
+    }
+</form>

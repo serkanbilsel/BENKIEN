@@ -1,0 +1,856 @@
+/*-----------------------------------------------------------------------------------
+
+Theme Name:  - 
+Theme URI:   - 
+Description: - 
+Author:      - Adem Duran - 
+Author URI:  - https://bionluk.com/adeemdrn - 
+Version:     - 1.0 - 
+
+-----------------------------------------------------------------------------------*/
+
+/*==================================================
+===| Global Css
+===================================================*/
+
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+input,
+button,
+select,
+textarea {
+    outline: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-weight: var(--fw-7) !important;
+    font-size: var(--fs-40) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    letter-spacing: -1.7px;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+section {
+    margin: 100px 0;
+}
+
+body {
+    overflow-x: hidden;
+    flex-direction: column;
+    box-sizing: border-box;
+    background-color: #fdfdfd !important;
+    color: var(--blackColor) !important;
+    font-family: "Poppins", sans-serif !important;
+    font-weight: var(--fw-5) !important;
+    font-size: var(--fs-15) !important;
+    letter-spacing: -0.5px;
+}
+
+.container,
+.container-lg,
+.container-md,
+.container-sm,
+.container-xl,
+.container-xxl {
+    max-width: 1400px !important;
+}
+
+/*==================================================
+===| Roote Settings
+===================================================*/
+
+:root {
+    /* ThemeOne Color */
+    --lightColor: #f8f8f8;
+    --blackColor: #1c1c1c;
+
+    /* Font Size */
+    --fs-13: 13px;
+    --fs-14: 14px;
+    --fs-15: 15px;
+    --fs-16: 16px;
+    --fs-17: 17px;
+    --fs-18: 18px;
+    --fs-19: 19px;
+    --fs-20: 20px;
+    --fs-21: 21px;
+    --fs-22: 22px;
+    --fs-23: 23px;
+    --fs-24: 24px;
+    --fs-25: 25px;
+    --fs-26: 26px;
+    --fs-27: 27px;
+    --fs-28: 28px;
+    --fs-29: 29px;
+    --fs-30: 30px;
+    --fs-31: 31px;
+    --fs-32: 32px;
+    --fs-33: 33px;
+    --fs-34: 34px;
+    --fs-35: 35px;
+    --fs-40: 40px;
+    --fs-45: 45px;
+    --fs-50: 50px;
+    --fs-55: 55px;
+    --fs-60: 60px;
+    --fs-65: 65px;
+    --fs-70: 70px;
+    --fs-75: 75px;
+
+    /* Font Weight */
+    --fw-1: 100;
+    --fw-2: 200;
+    --fw-3: 300;
+    --fw-4: 400;
+    --fw-5: 500;
+    --fw-6: 600;
+    --fw-7: 700;
+    --fw-8: 800;
+    --fw-9: 900;
+}
+
+/*==================================================
+===| Theme Settings
+===================================================*/
+
+html ::-webkit-scrollbar {
+    width: 2px;
+}
+
+html ::-webkit-scrollbar-button {
+    display: none;
+}
+
+html ::-webkit-scrollbar-track-piece {
+    background-color: transparent;
+}
+
+html ::-webkit-scrollbar-thumb {
+    background-color: var(--lightColor);
+    border-radius: 1px;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    -ms-border-radius: 1px;
+    -o-border-radius: 1px;
+}
+
+html ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--lightColor);
+    border-radius: 1px;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    -ms-border-radius: 1px;
+    -o-border-radius: 1px;
+}
+
+html ::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+
+html ::-webkit-resizer {
+    background-color: var(--lightColor);
+}
+
+.loader {
+    position: fixed;
+    z-index: 99999;
+    height: 100%;
+    width: 100%;
+    background: var(--blackColor);
+    opacity: .9;
+}
+
+.loader .auto-center {
+    height: 50%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.loader .bounce-conteneur {
+    display: inline-block;
+    width: 100%;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.loader .bounce-conteneur .bounce {
+    display: inline-block;
+    height: 13px;
+    width: 13px;
+    background: #FFF !important;
+    border-radius: 100%;
+    margin: 2px;
+}
+
+.loader .bounce-conteneur .bounce-left {
+    animation: left 1.5s ease infinite;
+}
+
+.loader .bounce-conteneur .bounce-center {
+    animation: center 1.5s ease infinite;
+}
+
+.loader .bounce-conteneur .bounce-right {
+    animation: right 1.5s ease infinite;
+}
+
+@keyframes left {
+
+    0%,
+    50%,
+    75%,
+    100% {
+        transform: scale(1);
+    }
+
+    25% {
+        transform: scale(1.5);
+    }
+}
+
+@keyframes center {
+
+    0%,
+    25%,
+    75%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.5);
+    }
+}
+
+@keyframes right {
+
+    0%,
+    25%,
+    50%,
+    100% {
+        transform: scale(1);
+    }
+
+    75% {
+        transform: scale(1.5);
+    }
+}
+
+@-webkit-keyframes left {
+
+    0%,
+    50%,
+    75%,
+    100% {
+        transform: scale(1);
+    }
+
+    25% {
+        transform: scale(1.5);
+    }
+}
+
+@-webkit-keyframes center {
+
+    0%,
+    25%,
+    75%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.5);
+    }
+}
+
+@-webkit-keyframes right {
+
+    0%,
+    25%,
+    50%,
+    100% {
+        transform: scale(1);
+    }
+
+    75% {
+        transform: scale(1.5);
+    }
+}
+
+
+.page__title strong {
+    font-size: var(--fs-35);
+    color: var(--blackColor);
+}
+
+.header__page {
+    padding: 100px 0;
+}
+
+/*==================================================
+===| Header Top
+===================================================*/
+.header__bar {
+    background-color: var(--blackColor);
+}
+
+.header__bar .breadcrumb-item+.breadcrumb-item::before {
+    color: var(--lightColor);
+}
+
+
+/*==================================================
+===| Container Css
+===================================================*/
+.header__menu {
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
+}
+
+.header__menu .header__nav .nav-link,
+.header__menu .header__icons a i {
+    transition: all 0.5s ease-in-out;
+}
+
+.header__menu .header__nav .nav-link.active {
+    color: var(--blackColor) !important;
+    border-bottom: 1px solid var(--blackColor);
+}
+
+.header__menu .header__nav .nav-link:hover {
+    color: var(--blackColor) !important;
+}
+
+.header__menu .header__icons .badge__basket span {
+    width: 20px;
+    height: 20px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: 12px;
+    color: var(--lightColor);
+    top: 5px !important
+}
+
+.header__menu .header__icons a i:hover {
+    color: var(--blackColor) !important;
+}
+
+/*==================================================
+===| Slider Wrapper Css
+===================================================*/
+.autoplay-progress {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    z-index: 10;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: var(--blackColor);
+}
+
+.autoplay-progress svg {
+    --progress: 0;
+    position: absolute;
+    left: 0;
+    top: 0px;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    stroke-width: 4px;
+    stroke: var(--blackColor);
+    fill: none;
+    stroke-dashoffset: calc(125.6 * (1 - var(--progress)));
+    stroke-dasharray: 125.6;
+    transform: rotate(-90deg);
+}
+
+.slider__wrapper .swiper-slide figure img {
+    width: 100%;
+    height: 800px;
+    object-fit: cover;
+    object-position: top;
+}
+
+/*==================================================
+===| Container Css
+===================================================*/
+.wrapper {
+    margin-top: 350px;
+}
+
+.text {
+    font-size: 64px;
+    line-height: 1.0625;
+    font-weight: 600;
+    letter-spacing: -0.009em;
+    max-width: 15em;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+@media (max-width: 640px) {
+    .text {
+        font-size: 42px;
+    }
+}
+
+.animated-headline {
+    position: absolute;
+    top: 0;
+    margin-top: 0;
+}
+
+.animation {
+    background: #000;
+    color: var(--blackColor);
+    text-align: center;
+    display: grid;
+    min-height: 90vh;
+    padding: 100px 0;
+    place-items: center;
+    box-sizing: border-box;
+}
+
+.animation .base-headline {
+    opacity: 0;
+}
+
+
+body:not(.no-js) .image-wrap {
+    transition: 1s ease-out;
+    transition-delay: 0.2s;
+    position: relative;
+    width: auto;
+    height: 80vh;
+    overflow: hidden;
+    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+    visibility: hidden;
+}
+
+body:not(.no-js) .image-wrap img {
+    transform: scale(1.3);
+    transition: 2s ease-out;
+}
+
+body:not(.no-js) .animating .image-wrap {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    visibility: visible;
+    transform: skewY(0);
+}
+
+body:not(.no-js) .animating img {
+    transform: scale(1);
+    transition: 4s ease-out;
+}
+
+body:not(.no-js) .fadeup {
+    opacity: 0;
+    transition: 0.4s ease-out;
+    transform: translateY(40px);
+}
+
+body:not(.no-js) .fading-up {
+    opacity: 1;
+    transition: 1s ease-out;
+    transform: translateY(0px);
+    transition-delay: 0.7s;
+}
+
+
+
+/*==================================================
+===| Container Css
+===================================================*/
+
+.stack__card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    position: sticky;
+    padding: 150px 0;
+    top: 0;
+    box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1), 0 -1px 2px rgba(0, 0, 0, 0.25);
+    background-color: #000000;
+}
+
+.stack__card img {
+    width: 100%;
+    max-height: 100%;
+}
+
+
+/*==================================================
+===| Container Css
+===================================================*/
+.popular__product .swiper .card .product__title strong {
+    font-size: var(--fs-17);
+    color: var(--blackColor);
+}
+
+
+/*==================================================
+===| Container Css
+===================================================*/
+.order__statics .statics__item .title strong {
+    font-size: var(--fs-25);
+}
+
+
+/*==================================================
+===| Container Css
+===================================================*/
+.benkien .swiper {
+    width: 100%;
+    max-width: 940px !important;
+    margin: 0 auto !important;
+    overflow: visible !important;
+}
+
+
+/*==================================================
+===| Footer Css
+===================================================*/
+
+.footer {
+    position: relative;
+    padding-top: 200px;
+    padding-bottom: 50px;
+}
+
+.footer:before {
+    background-image: url("../img/footer__bg.png");
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
+    height: 600px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    content: "";
+    z-index: -1;
+}
+.footer .footer__bottom  {
+    text-align: center;
+}
+
+.footer .footer__bottom  {
+    text-align: center;
+}
+
+
+/*==================================================
+===| Container Css
+===================================================*/
+.why__about .why__grids {
+    margin-top: 150px;
+}
+
+.why__about .why__grids .why__items {
+    background-color: #f8f8f8;
+    padding-top: 40px;
+    margin-bottom: 80px;
+}
+
+.why__about .why__grids .why__items strong {
+    font-size: var(--fs-25);
+}
+
+.why__about .why__grids .why__items .icons {
+    width: 80px;
+    height: 80px;
+    background-color: #f8f8f8;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    top: -40px !important;
+    left: 45px !important;
+}
+
+/*==================================================
+===| Container Css
+===================================================*/
+.shop__listOne .swiper {
+    width: 100%;
+    max-width: 940px !important;
+    margin: 0 auto !important;
+    overflow: visible !important;
+}
+
+.populary__product .swiper {
+    width: 100%;
+    max-width: 940px !important;
+    margin: 0 auto !important;
+    overflow: visible !important;
+}
+
+
+/*==================================================
+===| Container Css
+===================================================*/
+
+.product__tooltips  {
+    background-image: radial-gradient( circle 343px at 46.3% 47.5%,  rgba(242,242,242,1) 0%, rgba(241,241,241,1) 72.9% );
+    padding: 200px 0;
+}
+
+/*== start of code for tooltips ==*/
+.tool {
+    cursor: help;
+    position: relative;
+    width: 45px;
+    height: 45px;
+    background-color: #1c1c1c;
+    color: var(--lightColor);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-radius: 50%;
+}
+
+
+/*== common styles for both parts of tool tip ==*/
+.tool::before,
+.tool::after {
+    left: 50%;
+    opacity: 0;
+    position: absolute;
+    z-index: -100;
+}
+
+.tool:hover::before,
+.tool:focus::before,
+.tool:hover::after,
+.tool:focus::after {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    z-index: 999;
+}
+
+
+/*== pointer tip ==*/
+.tool::before {
+    border-style: solid;
+    border-width: 1em 0.75em 0 0.75em;
+    border-color: #3E474F transparent transparent transparent;
+    bottom: 100%;
+    content: "";
+    margin-left: -10px;
+    transition: all .65s cubic-bezier(.84, -0.18, .31, 1.26), opacity .65s .5s;
+    transform: scale(.6) translateY(-90%);
+}
+
+.tool:hover::before,
+.tool:focus::before {
+    transition: all .65s cubic-bezier(.84, -0.18, .31, 1.26) .2s;
+}
+
+
+/*== speech bubble ==*/
+.tool::after {
+    background: #3E474F;
+    border-radius: .25em;
+    bottom: 134%;
+    color: #EDEFF0;
+    content: attr(data-tip);
+    margin-left: -8.75em;
+    padding: 1em;
+    transition: all .65s cubic-bezier(.84, -0.18, .31, 1.26) .2s;
+    transform: scale(.6) translateY(50%);
+    width: 17.5em;
+}
+
+.tool:hover::after,
+.tool:focus::after {
+    transition: all .65s cubic-bezier(.84, -0.18, .31, 1.26);
+}
+
+@media (max-width: 760px) {
+    .tool::after {
+        font-size: .75em;
+        margin-left: -5em;
+        width: 10em;
+    }
+}
+
+.offcanvas .offcanvas-menu {
+    height: calc(90% - 90px);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -moz-justify-content: center;
+    -ms-justify-content: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -ms-flex-pack: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.offcanvas .offcanvas-footer {
+    width: 100%;
+    text-align: center;
+    padding: 0 15px;
+}
+.offcanvas .offcanvas-footer .social-media .nav .nav-item .nav-link {
+    font-size: var(--fs-16);
+    color: var(--grayBlackColor);
+}
+.offcanvas .offcanvas-footer .social-media .nav .nav-item .nav-link:hover {
+    color: var(--blackColor);
+    transition: var(--transition);
+}
+.offcanvas .offcanvas-footer .footer-text p {
+    font-size: var(--fs-13);
+    font-weight: var(--fw-4);
+    color: var(--grayBlackColor);
+}
+.offcanvas .offcanvas-menu .nav .nav-item .nav-link {
+    font-size: var(--fs-17);
+    font-weight: var(--fw-6);
+    color: var(--blueColor);
+}
+.offcanvas .offcanvas-menu .nav .nav-item .active {
+    color: var(--blackColor) !important;
+}
+.offcanvas .offcanvas-menu .nav .nav-item .nav-link:hover {
+    color: var(--blackColor);
+    transition: var(--transition);
+}
+
+.quantity-control {
+    display: flex;
+    background: #eaeaea;
+    border-radius: 10px;
+    padding: .5rem 0.3rem;
+  }
+  
+  .quantity-btn {
+    background: transparent;
+    border: none;
+    outline: none;
+    margin: 0;
+    padding: 0px 2px;
+    cursor: pointer;
+  }
+  .quantity-btn svg {
+    width: 15px;
+    height: 15px;
+  }
+  .quantity-input {
+    outline: none;
+    user-select: none;
+    text-align: center;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+  }
+  .quantity-input::-webkit-inner-spin-button,
+  .quantity-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+
+/*==================================================
+===| Container Css
+===================================================*/
+.product__campaning .card  {
+    background-image: linear-gradient( 179.2deg,  rgba(34,34,34,1) 0%, rgba(8,0,153,1) 29.7%, rgba(118,6,166,1) 63.4%, rgba(233,0,64,0.58) 100.1% );
+}
+.product__campaning .left__item strong,
+.product__campaning .right__item strong {
+    font-size: var(--fs-75);
+    color: var(--lightColor);
+}
+.product__campaning .left__item .texts p,
+.product__campaning .right__item .texts p {
+    font-size: var(--fs-20);
+    color: var(--lightColor);
+}
+/*==================================================
+===| Container Css
+===================================================*/
+
+/*==================================================
+===| Container Css
+===================================================*/
+
+/*==================================================
+===| Container Css
+===================================================*/
+
+@media (max-width: 767.98px) {
+    .footer {
+        padding-top: 0;
+    }
+    .footer:before {
+        height: 800px;
+    }
+}
+@media (min-width: 1199.98px) {
+
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl,
+    .container-xxl {
+        max-width: 1200px !important;
+    }
+}
+
+@media (min-width: 1399.98px) {
+
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl,
+    .container-xxl {
+        max-width: 1400px !important;
+    }
+}

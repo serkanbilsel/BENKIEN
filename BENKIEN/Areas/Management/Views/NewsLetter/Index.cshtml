@@ -1,0 +1,64 @@
+﻿@model IEnumerable<BENKIEN.Entities.NewsletterSubscription>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container-fluid">
+    <div class="card mb-4">
+        <div class="card-body text-center bg-dark text-bg-dark">
+            <p class="fw-bold text-bg-dark"><i>BENKIEN HABER LİSTESİ ABONELER</i></p>
+        </div>
+    </div>
+    <a class="btn btn-success" asp-action="Create">Yeni Ekle</a>
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Haber Bülteni Data Tablosu
+        </div>
+        <div class="card-body">
+            <table id="datatablesSimple" class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Id)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Email)
+                        </th>
+                        <th class="text-right"></th>
+                    </tr>
+                </thead>
+                <tbody class="text-right">
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Id)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+
+                         
+                            <td class="text-right">
+                                <button class="btn btn-danger" onclick="confirmDelete('@item.Id')">Aboneyi Sil?</button>
+                            </td>
+
+                            <script>
+                                function confirmDelete(itemId) {
+                                    var isConfirmed = confirm('Emin misiniz?');
+
+                                    if (isConfirmed) {
+                                        // Kullanıcı "OK" tuşuna bastığında, silme işlemini gerçekleştir
+                                        window.location.href = '/Management/NewsLetter/Delete/' + itemId;
+                                    }
+                                }
+                            </script>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

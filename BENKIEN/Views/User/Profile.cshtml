@@ -1,0 +1,151 @@
+﻿@model ProfileViewModel
+
+@* Profil bilgilerini gösterme *@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                <div class="card-header">
+
+                    <div id="profile-container" class="text-center">
+                        @if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+                        {
+                            <div class="alert alert-success">
+                                @Html.Raw(ViewBag.SuccessMessage)
+                            </div>
+                        }
+
+                        <div id="view-mode">
+                            <!-- Profil bilgilerini gösterme -->
+                            <div>
+                                <h4>Profil Bilgileri</h4>
+                                <hr />
+                                <dl class="row">
+                                    <dt class="col-sm-2 text-end">
+                                        @Html.DisplayNameFor(model => model.Name)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.Name)
+                                    </dd>
+
+                                    <dt class="col-sm-2 text-end">
+                                        @Html.DisplayNameFor(model => model.Surname)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.Surname)
+                                    </dd>
+
+                                    <dt class="col-sm-2 text-end">
+                                        @Html.DisplayNameFor(model => model.Email)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.Email)
+                                    </dd>
+
+                                    <dt class="col-sm-2 text-end">
+                                        @Html.DisplayNameFor(model => model.Phone)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.Phone)
+                                    </dd>
+
+                                    <dt class="col-sm-2 text-end">
+                                        @Html.DisplayNameFor(model => model.Address)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.Address)
+                                    </dd>
+
+                                    <dt class="col-sm-2 text-end">
+                                        @Html.DisplayNameFor(model => model.CurrentPassword)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        <!-- Güvenlik nedeniyle şifreyi gösterme -->
+                                        ********
+                                    </dd>
+                                </dl>
+                            </div>
+
+                            <button id="edit-button" class="btn btn-primary">Düzenle</button>
+                        </div>
+
+                        <div id="edit-mode" style="display:none;">
+                            <!-- Profil bilgilerini düzenleme formu -->
+                            <form asp-action="UpdateUser" method="post">
+                                @Html.AntiForgeryToken()
+
+                                <div class="form-group">
+                                    <label asp-for="Name" class="control-label"></label>
+                                    <input asp-for="Name" class="form-control" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label asp-for="Surname" class="control-label"></label>
+                                    <input asp-for="Surname" class="form-control" />
+                                    <span asp-validation-for="Surname" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label asp-for="Email" class="control-label"></label>
+                                    <input asp-for="Email" class="form-control" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label asp-for="Phone" class="control-label"></label>
+                                    <input asp-for="Phone" class="form-control" />
+                                    <span asp-validation-for="Phone" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label asp-for="Address" class="control-label"></label>
+                                    <textarea asp-for="Address" class="form-control"></textarea>
+                                    <span asp-validation-for="Address" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label asp-for="CurrentPassword" class="control-label"></label>
+                                    <input asp-for="CurrentPassword" class="form-control" />
+                                    <span asp-validation-for="CurrentPassword" class="text-danger"></span>
+                                </div>
+
+                                <!-- Yeni Şifre -->
+                                <div class="form-group">
+                                    <label asp-for="NewPassword" class="control-label"></label>
+                                    <input asp-for="NewPassword" class="form-control" />
+                                    <span asp-validation-for="NewPassword" class="text-danger"></span>
+                                </div>
+
+                                <!-- Yeni Şifre Tekrarı -->
+                                <div class="form-group">
+                                    <label asp-for="ConfirmNewPassword" class="control-label"></label>
+                                    <input asp-for="ConfirmNewPassword" class="form-control" />
+                                    <span asp-validation-for="ConfirmNewPassword" class="text-danger"></span>
+                                </div>
+
+                                <!-- Hata Mesajı -->
+                                <div id="error-message" class="alert alert-danger" style="display:none;">
+                                    Şifreler eşleşmiyor.
+                                </div>
+
+                                <!-- Başarı Mesajı -->
+                                <div id="success-message" class="alert alert-success" style="display:none;">
+                                    Profil güncellendi.
+                                </div>
+
+                                <br />
+                                <div class="form-group">
+                                    <button id="save-button" type="submit" class="btn btn-success">Kaydet</button>
+                                    <button id="cancel-button" type="button" class="btn btn-danger">İptal</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/profileupdatejs.js"></script>
