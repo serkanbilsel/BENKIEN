@@ -5,21 +5,12 @@ using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddSession();
 builder.Services.AddHttpClient();
-builder.Services.AddDbContext<DatabaseContext>(); //burada veritabanı işlemleri için kullandığımız context
+builder.Services.AddDbContext<DatabaseContext>(); 
 
-//builder.Services.AddDbContext<DatabaseContext>(options =>
-//{
-//    options.UseSqlServer("104.247.167.130\\MSSQLSERVER2019;Database=arendij2_benkien;User Id=arendij2_benuser;Password=Benkien2400*;Encrypt=False;TrustServerCertificate=true;");
-//});
-
-//builder.Services.AddAuthorization(options =>
-//{
-//    options.AddPolicy("RequireAdmin", policy => policy.RequireClaim(ClaimTypes.Role, "IsAdmin"));
-//});
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x => {
     x.LoginPath = "/Management/Login"; // Login sisteminin varsayılan login giriş adresini kendi adresimizle değiştiriyoruz.
     x.Cookie.Name = "ManagementLogin"; // oturum için oluşacak cookie nin ismini belirledik.
@@ -30,8 +21,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     x.Cookie.HttpOnly = true;
     x.Cookie.SameSite = SameSiteMode.Lax;
     x.Cookie.SecurePolicy = CookieSecurePolicy.Always;
-}); //Admin panelde authorize attribute ü ile güvenlik sağlayabilmek için
-
+}); 
 
 
 
